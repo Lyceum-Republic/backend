@@ -13,6 +13,8 @@ class User(DataBase):
     about = sql.Column(sql.String, nullable=True)
     created_date = sql.Column(sql.TIMESTAMP, default=datetime.timestamp(datetime.now()),
                               nullable=False)
-    tags = orm.relation("Tag", secondary="user_to_tags", backref="user")
-    roles = orm.relation("Role", secondary="user_to_roles", backref="user")
-    project = orm.relation("Project", back_population="user")
+    tags = orm.relation("Tag", secondary="user_to_tags", backref="users")
+    roles = orm.relation("Role", secondary="user_to_roles", backref="users")
+    leading_projects = orm.relation("Project", back_population="user")  # тут мы содержим именно
+    # те проекты, где пользователь - автор.(потому что если мы добавляем проект в
+    # это поле, то у нас в таблице проектов author_id становится id этого юзера
