@@ -13,6 +13,5 @@ class User(DataBase):
     about = sql.Column(sql.String, nullable=True)
     created_date = sql.Column(sql.TIMESTAMP, default=datetime.timestamp(datetime.now()),
                               nullable=False)
-    tags = orm.relation("Tags", secondary="User_to_Tag", backref="user")
-    roles = orm.relation("Roles", secondary="User_to_Role", backref="user")
-    
+    tags = orm.relation("Tag", secondary="user_to_tags", backref="user")
+    roles = orm.relation("Role", secondary="user_to_roles", backref="user")
