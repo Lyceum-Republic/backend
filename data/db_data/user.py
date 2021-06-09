@@ -10,7 +10,7 @@ class User(DataBase):
     id = sql.Column(sql.Integer, primary_key=True, autoincrement=True)
     name = sql.Column(sql.String, nullable=False)
     email = sql.Column(sql.String, nullable=False, unique=True, index=True)
-    about = sql.Column(sql.String, nullable=True)
+    about = sql.Column(sql.String, nullable=True, default=None)
     created_date = sql.Column(sql.TIMESTAMP, default=datetime.timestamp(datetime.now()),
                               nullable=False)
     tags = orm.relation("Tag", secondary="user_to_tags", backref="users")

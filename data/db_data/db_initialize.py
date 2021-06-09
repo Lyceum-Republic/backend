@@ -14,8 +14,8 @@ def global_init(db_file):  # тут пока что есть файл БД, по
     if not db_file:
         raise Exception('No DB file specified')
     connection_string = f'sqlite:///{db_file}?check_same_thread=False'
-    engine = sql.create_engine(connection_string, echo=False, autocommit=False)
-    __factory = orm.sessionmaker(bind=engine)
+    engine = sql.create_engine(connection_string, echo=False)
+    __factory = orm.sessionmaker(bind=engine, autocommit=False, autoflush=False)
     from . import __all_models
     DataBase.metadata.create_all(engine)
 
