@@ -15,3 +15,4 @@ class User(DataBase):
                               nullable=False)
     tags = orm.relation("Tag", secondary="user_to_tags", backref="user")
     roles = orm.relation("Role", secondary="user_to_roles", backref="user")
+    project = orm.relation("Project", back_population="user")

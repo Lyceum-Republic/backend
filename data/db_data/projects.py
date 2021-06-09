@@ -12,4 +12,5 @@ class Project(DataBase):
     name = sql.Column(sql.String, nullable=False, unique=True)
     creation_date = sql.Column(sql.TIMESTAMP, default=dt.timestamp(dt.now()), nullable=False)
     milestones = orm.relation('Milestone', back_populates='project')
+    user = orm.relation('User')
     # TODO: сделать что-то с пользователями проекта, пока что только автор есть
