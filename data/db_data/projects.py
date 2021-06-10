@@ -19,4 +19,4 @@ class Project(DataBase):
     creation_date = sql.Column(sql.TIMESTAMP, default=dt.timestamp(dt.now()), nullable=False)
     milestones = orm.relation('Milestone', back_populates='project')
     user = orm.relation('User', secondary='users_to_projects', backref="projects")
-    # TODO: сделать что-то с пользователями проекта, пока что только автор есть
+    comments = orm.relation('Feedback', back_populates='project')

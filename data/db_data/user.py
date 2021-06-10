@@ -15,6 +15,8 @@ class User(DataBase):
                               nullable=False)
     tags = orm.relation("Tag", secondary="user_to_tags", backref="users")
     roles = orm.relation("Role", secondary="user_to_roles", backref="users")
-    leading_projects = orm.relation("Project", back_population="user")  # тут мы содержим именно
+    leading_projects = orm.relation("Project", back_populates="user")  # тут мы содержим именно
     # те проекты, где пользователь - автор.(потому что если мы добавляем проект в
     # это поле, то у нас в таблице проектов author_id становится id этого юзера
+    written_comments = orm.relation("Feedback", back_populates="user")
+    notifications = orm.relation("Notification", back_populates="user")
