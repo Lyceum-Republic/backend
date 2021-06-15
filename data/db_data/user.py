@@ -13,6 +13,7 @@ class User(DataBase):
     about = sql.Column(sql.String, nullable=True, default=None)
     created_date = sql.Column(sql.TIMESTAMP, default=datetime.timestamp(datetime.now()),
                               nullable=False)
+    way_to_avatar = sql.Column(sql.String, default='img/default_avatar.jpg', nullable=False)
     tags = orm.relation("Tag", secondary="user_to_tags", backref="users")
     roles = orm.relation("Role", secondary="user_to_roles", backref="users")
     leading_projects = orm.relation("Project", back_populates="user")  # тут мы содержим именно
