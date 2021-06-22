@@ -12,5 +12,3 @@ templates = Jinja2Templates(directory="templates")
 @app.on_event("startup")
 async def startup_event():
     global_init('db/database.sqlite')
-
-
