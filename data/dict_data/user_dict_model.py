@@ -1,6 +1,7 @@
 import pydantic
 from project_dict_model import Project
 from notification_dict_model import Notification
+from comment_dict_model import Comment
 from typing import List, Optional
 from datetime import datetime
 
@@ -19,7 +20,8 @@ class UserCreateModel(UserBaseModel):
 class User(UserBaseModel):
     id: int
     leading_projects: List[Project] = []
-    written_comments: List[Notification] = []
+    written_comments: List[Comment] = []
+    notifications: List[Notification] = ['Может быть какой-то вступительный текст']
 
     class Config:
         orm_mode = True
